@@ -1,0 +1,43 @@
+body {
+    padding: 0;
+    margin: 0 !important;
+    //background: $grey-400;
+    background: $white;
+}
+
+
+
+
+&.dev {
+    color: $white;
+    text-align: center;
+	background: $grey-700;
+}
+
+&.look {
+    background: $blue-200;
+}
+
+
+&.small {
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+
+.dev2 {
+	background: $dev2;
+}
+
+
+
+
+
+img {
+    &.ca-image {
+        max-width: auto;
+        width: 100%;
+        display: block;
+
+    }
+}

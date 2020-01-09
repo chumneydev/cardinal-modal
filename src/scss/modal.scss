@@ -1,0 +1,167 @@
+@import "variables";
+
+/* Modal Base CSS */
+.ca-modal-overlay {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+
+    opacity: 0;
+
+    width: 100%;
+    height: 100%;
+
+    -webkit-transition: 1ms opacity ease;
+    -moz-transition: 1ms opacity ease;
+    -ms-transition: 1ms opacity ease;
+    -o-transition: 1ms opacity ease;
+    transition: 1ms opacity ease;
+
+    background: rgba(0, 0, 0, .6);
+}
+
+.ca-modal {
+    position: absolute;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    width: 94%;
+    padding: 24px 20px;
+    transition: 1ms opacity ease;
+    transform: translate(-50%, -50%);
+
+    border-radius: 2px;
+    background: #fff;
+}
+
+.ca-modal.ca-modal-open.ca-modal-top {
+    top: 20px;
+    transform: translate(-50%, 0);
+}
+
+.ca-modal.ca-modal-open {
+    opacity: 1;
+}
+
+.ca-modal-overlay.ca-modal-open {
+    opacity: 1;
+
+}
+
+/* Close Button */
+.ca-modal-close {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 12px;
+
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    padding: 5px 7px 7px;
+
+    cursor: pointer;
+
+    color: #fff;
+    border: 0;
+    outline: none;
+    background: #e74c3c;
+}
+
+.ca-modal-close:hover {
+    background: #c0392b;
+}
+
+/* Default Animation */
+
+.ca-modal-overlay.fade-and-drop {
+    display: block;
+
+    opacity: 0;
+}
+
+.ca-modal.fade-and-drop {
+    top: -300%;
+
+    opacity: 1;
+
+    display: block;
+}
+
+.ca-modal.fade-and-drop.ca-modal-open {
+    top: 50%;
+    transition: 500ms top 500ms ease;
+}
+
+.ca-modal.fade-and-drop.ca-modal-open.ca-modal-top {
+    transition: 500ms top 500ms ease;
+}
+
+.ca-modal-overlay.fade-and-drop.ca-modal-open {
+    top: 0;
+    transition: 500ms opacity ease;
+    opacity: 1;
+}
+
+.ca-modal.fade-and-drop {
+    transition: 500ms top ease;
+}
+
+.ca-modal-overlay.fade-and-drop {
+    transition: 500ms opacity 500ms ease;
+}
+
+/* Demo Styles */
+html {
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: Helvetica, Arial, san-serif;
+    font-size: 16px;
+
+    margin: 0;
+    padding: 0;
+}
+
+#content {
+    display: none;
+}
+
+.trigger-button {
+    font-size: 17px;
+
+    position: relative;
+    top: 100px;
+
+    display: block;
+
+    margin: auto;
+    padding: 10px 30px;
+
+    cursor: pointer;
+
+    color: #fff;
+    border: 0;
+    border-radius: 3px;
+    outline: none;
+    background: #2ecc71;
+    box-shadow: 0 5px 1px #27ae60;
+}
+
+.trigger-button:hover {
+    background: #27ae60;
+    box-shadow: 0 5px 1px #145b32;
+}
+
+.trigger-button:focus {
+    border-top: 5px solid white;
+    box-shadow: none;
+}
