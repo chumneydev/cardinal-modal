@@ -44,7 +44,7 @@
     <!-- containter -->
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="src/js/cardinal.modal.query.js"></script>
+    <script src="src/js/cardinal.modal.js"></script>
 
 
 
@@ -66,10 +66,13 @@
     caModal.open();*/
 
 
-    $('#cardinal-offer').Cardinal( {
-        title: 'Hey',
+    $('#cardinal-offer').Cardinal({
+        title: 'Welcome Scott!',
+        subTitle: 'This is just some supporting text..',
         width: '1200',
-        overlay: true,
+        titleColor: '#FFFFFF',
+        headerColor: '#000000',
+        overlay: false,
         autoOpen: true,
     });
 

@@ -63,6 +63,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             title: '',
             subTitle: '',
             headerColor: '',
+            titleColor: '#000000',
             width: '',
             autoOpen: false,
             overlay: true,
@@ -100,13 +101,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         },
         open: function () {
             console.log('opening');
-
-            if (this.settings.autoOpen == true) {
-                this.create()
-
-                $(this.overlay).css('opacity', 1)
-                $(className).css('opacity', 1)
-            }
+            this.create()
 
 
 
@@ -132,13 +127,59 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                 this.overlay = document.createElement('div');
                 $(this.overlay).attr('id', 'cardinal-overlay');
                 $('body').append(this.overlay);
+            } else {
+                $(this.element).addClass('no-overlay')
             }
+
+
   
             if (this.settings.title != '' || this.settings.subTitle != '') {
                 console.log('title');
 
                 this.header = document.createElement('div');
                 $(this.header).attr('class', 'header');
+                $(this.element).prepend(this.header);
+             
+                
+
+
+
+
+
+                if (this.settings.headerColor !== null) {
+                    $(this.header).css('background', this.settings.headerColor)
+                }
+
+                if (this.settings.title !== null) {
+                    var title = document.createElement('h1');
+                    this.header.appendChild(title);
+
+                    var titleNode = document.createTextNode(this.settings.title);
+                    title.appendChild(titleNode);
+                }
+
+                if (this.settings.subTitle !== null) {
+                    var subTitle = document.createElement('h2');
+                    this.header.appendChild(subTitle);
+
+                    var subTitleNode = document.createTextNode(this.settings.subTitle);
+                    subTitle.appendChild(subTitleNode);
+                    
+                }
+
+                if (this.settings.titleColor !== null) {
+                    $(title).css('color', this.settings.titleColor);
+                    $(subTitle).css('color', this.settings.titleColor);
+                }
+
+
+                
+
+            }
+
+            if (this.settings.autoOpen === true) {
+                $(this.overlay).addClass('is-opened').fadeIn(30000);
+                $(this.element).addClass('is-opened').fadeIn(30000);
 
             }
 
