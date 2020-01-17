@@ -42,6 +42,7 @@
             subTitle: '',
             headerColor: '',
             titleColor: '#000000',
+            includeCloseButton: true,
             width: 500,
             autoOpen: false,
             overlay: true,
@@ -81,13 +82,21 @@
             console.log('opening');
             this.create()
             this.ajaxContent();
-
+            this.closeButton();
 
 
 
         },
+        closeButton: function () {
+            if(this.settings.includeCloseButton != false) {
+                this.closeButton = document.createElement('button');
+                $(this.closeButton).attr('class', 'ca-close-button');
+                $(this.closeButton).html('&times');
+                $(this.element).prepend(this.closeButton);
+            }
+        },
         ajaxContent: function () {
-            if(this.settings.ajaxURL != null) {
+            if(this.settings.ajaxURL !== '') {
                 console.log(this.settings.ajaxURL);
                 $.get(this.settings.ajaxURL, function(data) {
                     $('.ca-content').html(data);
@@ -106,7 +115,7 @@
             $(this.element).addClass('cardinal-modal')
 
             if (this.settings.width != null) {
-                $(this.element).css('width', this.settings.width + 'px')
+                $(this.element).css('max-width', this.settings.width + 'px')
             }
 
             if (this.settings.overlay != false) {

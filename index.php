@@ -50,47 +50,17 @@
 
 </body>
 <script type="text/javascript">
-    //var content = "Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue.";
-
-    //var content = document.getElementById('content');
-
-    /*var content = $.get('http://192.168.12.3:8888/development/projects/password/#', function(data) {
-        $('.ca-modal-content').html(data)
-    });*/
-
-    /*var caModal = new Modal({
-        maxWidth: 580,
-        autoOpen: false,
-        content: content
-    }); 
-    caModal.open();*/
-
 
     $('#cardinal-offer').Cardinal({
         title: 'Welcome Scott!',
         subTitle: 'This is just some supporting text..',
         width: 600,
-        titleColor: '#FFFFFF',
-        headerColor: '#000000',
-        overlay: true,
+        //titleColor: '#FFFFFF',
+        //headerColor: '#000000',
+        overlay: false,
         autoOpen: true,
-        ajaxURL: 'http://192.168.12.3:8888/internal-projects/demos/content.php',
     });
 
-
-
-    /*var myModal = new Cardinal({
-        title: 'Welcome Scott!',
-        subTitle: 'This is a bit of information',
-        overlay: true,
-        autoOpen: true,
-        //height: 200,
-        exitIntent: false,
-        ajaxURL: 'http://192.168.12.3:8888/internal-projects/demos/content.php',
-        //cookieAmount: 2,
-        //cookieName: 'abcd',
-        //cookieValue: 'efgh',
-    }); */
 </script>
 
 </html>

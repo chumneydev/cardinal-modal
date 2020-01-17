@@ -63,6 +63,32 @@
         margin: 0;
     }
 
+    & .ca-close-button {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 24px;
+        line-height: 2px;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        color: $white;
+        border: 0;
+        outline: none;
+        background: #e74c3c;
+
+        &:hover {
+            background: #c0392b;
+        }
+
+    }
+
+
+
+
+
 }
 
 
