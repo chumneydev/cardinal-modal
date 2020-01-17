@@ -30,7 +30,7 @@
 
 
     <div id="cardinal-offer">
-        <div class="content">
+        <div class="ca-content">
             <p>Etiam porta sem malesuada magna mollis euismod. Sed posuere consectetur est at lobortis. Donec sed odio dui. Donec id elit non mi porta gravida at eget metus. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
         </div>
     </div>
@@ -69,11 +69,12 @@
     $('#cardinal-offer').Cardinal({
         title: 'Welcome Scott!',
         subTitle: 'This is just some supporting text..',
-        width: '1200',
+        width: 600,
         titleColor: '#FFFFFF',
         headerColor: '#000000',
-        overlay: false,
+        overlay: true,
         autoOpen: true,
+        ajaxURL: 'http://192.168.12.3:8888/internal-projects/demos/content.php',
     });
 
 
