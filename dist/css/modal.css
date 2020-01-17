@@ -26,7 +26,7 @@
   background: #fff;
 }
 
-.ca-modal.ca-modal-open.ca-modal-top {
+.ca-modal.ca-modal-open.ca-modal-anchor {
   top: 20px !important;
   transform: translate(-50%, 0);
 }
@@ -79,7 +79,7 @@
   transition: 500ms top 500ms ease;
 }
 
-.ca-modal.fade-and-drop.ca-modal-open.ca-modal-top {
+.ca-modal.fade-and-drop.ca-modal-open.ca-modal-anchor {
   transition: 500ms top 500ms ease;
 }
 
