@@ -24,3 +24,8 @@ body {
   margin: 20px auto;
   max-width: 1100px;
 }
+
+#ca-of {
+  padding: 24px 20px;
+  background: #D55B3D;
+}

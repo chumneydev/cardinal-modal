@@ -1,326 +1,172 @@
-// Create an immediately invoked functional expression to wrap our code
-(function () {
+/*
+ * Louis Stephens: Modal for Chumney
+ * based on jquery-modal by Kyle Fox
+ * 2019
+ * version 0.5
+ */
+/*
+Copyright(c) 2012 Kyle Fox
 
-    // Define our constructor 
-    this.Cardinal = function () {
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files(the "Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and / or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
 
-        // Create global element references
-        this.closeButton = null;
-        this.modal = null;
-        this.overlay = null;
+    The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
 
-        // Determine proper prefix
-        this.transitionEnd = transitionSelect();
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
 
-        var _ = this;
 
 
 
-        // Define option defaults 
-        var defaults = {
+
+ /*(function (factory) {
+     if (typeof module === "object" && typeof module.exports === "object") {
+         factory(require("jquery"), window, document);
+     }
+     else {
+        factory(jQuery, window, document);
+     }
+}*/
+
+/*
+ *  jquery-boilerplate - v4.0.0
+ *  A jump-start for jQuery plugins development.
+ *  http://jqueryboilerplate.com
+ *
+ *  Made by Zeno Rocha
+ *  Under MIT License
+ */
+// the semi-colon before function invocation is a safety net against concatenated
+// scripts and/or other plugins which may not be closed properly.
+;
+(function ($, window, document, undefined) {
+
+    "use strict";
+
+    var className = "cardinal-modal";
+    var selector = $(this);
+    console.log(selector)
+    // Create the defaults once
+    var pluginName = "Cardinal",
+        defaults = {
+            title: '',
+            subTitle: '',
+            headerColor: '',
+            width: '',
             autoOpen: false,
-            className: 'fade-and-drop',
-            closeButton: true,
-            content: "",
-            maxWidth: 600,
-            minWidth: 280,
-            height: 0,
             overlay: true,
-            ajaxURL: "",
+            modalID: '',
+            ajaxURL: '',
             cookieAmount: 0,
             cookieName: '',
             cookieValue: '',
             exitIntent: false,
-            onOpening: function () {}, // function for ajax url
+            overlay: true,
+            overlayDuration: null,
+            overlayDelay: 1.0
+        };
+
+    function Plugin(element, options) {
+        this.element = element;
+
+        this.settings = $.extend({}, defaults, options);
+        this._defaults = defaults;
+        this._name = pluginName;
+        
+        if(this.settings.autoOpen != true) {
+            $(element).addClass('ca-hidden')
         }
+        
+        
+        this.init();
+    }
 
-        // Create options by extending defaults with the passed in arugments
-        if (arguments[0] && typeof arguments[0] === "object") {
-            this.options = extendDefaults(defaults, arguments[0]);
-        }
+    $.extend(Plugin.prototype, {
+        init: function () {
 
-        if (this.options.autoOpen === true) {
-            this.open()
-            console.info('Chumney & Associates: Modal has opened')
+            // Place initialization logic here
+            this.open();
+        },
+        open: function () {
+            console.log('opening');
 
-        }
+            if (this.settings.autoOpen == true) {
+                this.create()
 
-        // If exit intent is true, delay modal
-        if (this.options.exitIntent === true) {
-
-            var invokeModal = true;
-            document.addEventListener("mouseout", evt => {
-                if (evt.toElement === null && evt.relatedTarget === null) {
-                    if (invokeModal) {
-                        // An intent to exit has happened
-                        console.log("Chumney & Associates")
-                        this.open();
-                        invokeModal = false;
-                    }
-                }
-            });
-            console.log('Chumney & Associates: exit intent engaged');
-        }
+                $(this.overlay).css('opacity', 1)
+                $(className).css('opacity', 1)
+            }
 
 
-        /*if (this.options.cookie.cookieActive === true) {
-            console.log(this.options.cookie.cookieAmount)
-            createCookie(this.options.cookie.cookieName, this.options.cookie.cookieValue, this.options.cookie.cookieAmount);
-            //console.log(getCookie(this.options.cookie.cookieName))
-            console.log(accessCookie(this.options.cookie.cookieName))
 
-            // If cookie is set, then dont open
-            if (checkCookie(this.options.cookie.cookieName)) {
 
+
+        },
+        ajaxContent: function () {
+
+        },
+        yourOtherFunction: function (text) {
+
+            $(this.element).text(text);
+        },
+        create: function () {
+            //console.log('hey')
+            $(this.element).addClass('cardinal-modal')
+
+            if (this.settings.width != null) {
+                $(this.element).css('width', this.settings.width + 'px')
+            }
+
+            if (this.settings.overlay != false) {
+                this.overlay = document.createElement('div');
+                $(this.overlay).attr('id', 'cardinal-overlay');
+                $('body').append(this.overlay);
+            }
+  
+            if (this.settings.title != '' || this.settings.subTitle != '') {
+                console.log('title');
+
+                this.header = document.createElement('div');
+                $(this.header).attr('class', 'header');
 
             }
 
-            else {
-                removeCookie(this.options.cookie.cookieName)
-            }
-        }*/
 
 
-        // Ajax driven content
-        if (this.options.onOpening && typeof (this.options) === 'function') {
-            this.options.onOpening(this);
-        }
 
-
-    }
-
-    // Public Methods
-
-    Cardinal.prototype.close = function () {
-        var _ = this;
-        this.modal.className = this.modal.className.replace(" ca-modal-open", "");
-        this.overlay.className = this.overlay.className.replace(" ca-modal-open",
-            "");
-        this.modal.addEventListener(this.transitionEnd, function () {
-            _.modal.parentNode.removeChild(_.modal);
-        });
-        this.overlay.addEventListener(this.transitionEnd, function () {
-            if (_.overlay.parentNode) _.overlay.parentNode.removeChild(_.overlay);
-
-        });
-        console.log('Chumney Modal has closed')
-
-    }
-
-    Cardinal.prototype.open = function () {
-        buildOut.call(this);
-        initializeEvents.call(this);
-        window.getComputedStyle(this.modal).height;
-        this.modal.className = this.modal.className +
-            (this.modal.offsetHeight > window.innerHeight ?
-                " ca-modal-open ca-modal-anchor" : " ca-modal-open");
-        this.overlay.className = this.overlay.className + " ca-modal-open";
-
-        this.setCookie()
-        this.allCookies()
-        this.checkCookie()
-        this.ajaxLoadContent()
-    }
-
-    // Load Content via ajax
-    Cardinal.prototype.ajaxLoadContent = function () {
-        var _ = this;
-
-        if (_.options.ajaxURL != '') {
-            _.options.content = $.get(_.options.ajaxURL, function(data) {
-                $('.ca-modal-content').html(data)
-                console.log('The content has been loaded into the html')
-            });
-        }
-
-    }
-
-
-    Cardinal.prototype.allCookies = function() {
-        var _ = this;
-
-        if (_.options.cookieAmount != 0) {
-            _.close();
-            console.log("liusehisuh")
-            console.log(_.checkCookie(_.options.cookieName))
 
         }
-
-    }
-
-    Cardinal.prototype.setCookie = function (cookieAmount) {
-        var _ = this;
-
-        if (_.options.cookieAmount) {
-            createCookie(_.options.cookieName, _.options.cookieValue, _.options.cookieAmount, )
-            console.log("Hello!")
-        }
-    }
-
-
-    Cardinal.prototype.checkCookie = function (cookieName) {
-        var _ = this;
-
-        if (document.cookie.indexOf(_.options.cookieName) > -1) {
-            console.log('Cookie Name is: ' + _.options.cookieName);
-        }
-
-
-    }
+    });
 
 
 
 
-    // Private Methods
-
-    function buildOut() {
-
-        var content, contentHolder, docFrag;
-
-        /*
-         * If content is an HTML string, append the HTML string.
-         * If content is a domNode, append its content.
-         */
-
-        if (typeof this.options.content === "string") {
-            content = this.options.content;
-        } else {
-            content = this.options.content.innerHTML;
-        }
-
-        // Create a DocumentFragment to build with
-        docFrag = document.createDocumentFragment();
-
-        // Create modal element
-        this.modal = document.createElement("div");
-        this.modal.className = "ca-modal " + this.options.className;
-        this.modal.style.minWidth = this.options.minWidth + "px";
-        this.modal.style.maxWidth = this.options.maxWidth + "px";
-
-
-        // height
-        // this.modal.style.height = this.options.height + "px";
-
-
-        // If closeButton option is true, add a close button
-        if (this.options.closeButton === true) {
-            this.closeButton = document.createElement("button");
-            this.closeButton.className = "ca-modal-close ca-modal-close-button";
-            this.closeButton.innerHTML = "&times;";
-            this.modal.appendChild(this.closeButton);
-        }
-
-        // If overlay is true, add one
-        if (this.options.overlay === true) {
-            this.overlay = document.createElement("div");
-            this.overlay.className = "ca-modal-overlay " + this.options.className;
-            docFrag.appendChild(this.overlay);
-        }
-
-
-        // Create content area and append to modal
-        contentHolder = document.createElement("div");
-        contentHolder.className = "ca-modal-content";
-        contentHolder.innerHTML = content;
-        this.modal.appendChild(contentHolder);
-
-        // Append modal to DocumentFragment
-        docFrag.appendChild(this.modal);
-
-        // Append DocumentFragment to body
-        document.body.appendChild(docFrag);
-
-    }
-
-    function extendDefaults(source, properties) {
-        var property;
-        for (property in properties) {
-            if (properties.hasOwnProperty(property)) {
-                source[property] = properties[property];
-            }
-        }
-        return source;
-
-    }
 
 
 
-    // Create a Cookie
-    function createCookie(cookieName, cookieValue, daysToExpire) {
-        var date = new Date();
-        date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
-        document.cookie = cookieName + "=" + cookieValue + "; expires=" + date.toUTCString();
-    }
 
-    // Access a Cookie
-    function accessCookie(cookieName) {
-        var name = cookieName + "=";
-        var allCookieArray = document.cookie.split(';');
-        for (var i = 0; i < allCookieArray.length; i++) {
-            var temp = allCookieArray[i].trim();
-            if (temp.indexOf(name) == 0)
-                return temp.substring(name.length, temp.length);
-        }
-        return "";
-    }
-
-    function removeCookie(name) {
-        document.cookie = name;
-    }
-
-    function checkCookie(cookieName) {
-        var cookieCheck = accessCookie(cookieName);
-
-        if (cookieCheck = "") {
-            this.close();
-        } else if (cookieCheck != "") {
-            this.close();
-
-        } else {}
-    }
-
-
-    function exitIntent() {
-        document.addEventListener("mouseout", evt => {
-            if (evt.toElement === null && evt.relatedTarget === null) {
-                // An intent to exit has happened
-                console.log("Dont leave!")
-                this.open();
-
+    $.fn[pluginName] = function (options) {
+        return this.each(function () {
+            if (!$.data(this, "plugin_" + pluginName)) {
+                $.data(this, "plugin_" +
+                    pluginName, new Plugin(this, options));
             }
         });
-    }
+    };
+
+})(jQuery, window, document);
 
 
 
-    function initializeEvents() {
 
-        if (this.closeButton) {
-            this.closeButton.addEventListener('click', this.close.bind(this));
-        }
-
-        if (this.overlay) {
-            this.overlay.addEventListener('click', this.close.bind(this));
-        }
-
-        // Exit Intent
-
-        if (this.exitIntent) {
-            this.exitIntent.addEventListener('mouseleave', this.open.bind(this));
-            console.log('Chumney')
-        }
-
-    }
-
-    function transitionSelect() {
-        var el = document.createElement("div");
-        if (el.style.WebkitTransition) return "webkitTransitionEnd";
-        if (el.style.OTransition) return "oTransitionEnd";
-        return 'transitionend';
-    }
-
-    function cookie() {
-        var cookie = document.cookie;
-    }
-
-}());

@@ -24,13 +24,17 @@
         <p>Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
 
 
+
     </div>
 
 
 
-    <div id="content">
-        <p>Etiam porta sem malesuada magna mollis euismod. Sed posuere consectetur est at lobortis. Donec sed odio dui. Donec id elit non mi porta gravida at eget metus. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+    <div id="cardinal-offer">
+        <div class="content">
+            <p>Etiam porta sem malesuada magna mollis euismod. Sed posuere consectetur est at lobortis. Donec sed odio dui. Donec id elit non mi porta gravida at eget metus. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        </div>
     </div>
+
 
 
 
@@ -40,7 +44,7 @@
     <!-- containter -->
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="src/js/cardinal.modal.js"></script>
+    <script src="src/js/cardinal.modal.query.js"></script>
 
 
 
@@ -48,7 +52,7 @@
 <script type="text/javascript">
     //var content = "Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue.";
 
-    var content = document.getElementById('content');
+    //var content = document.getElementById('content');
 
     /*var content = $.get('http://192.168.12.3:8888/development/projects/password/#', function(data) {
         $('.ca-modal-content').html(data)
@@ -62,17 +66,27 @@
     caModal.open();*/
 
 
-    var myModal = new Cardinal({
-        content: content,
+    $('#cardinal-offer').Cardinal( {
+        title: 'Hey',
+        width: '1200',
+        overlay: true,
+        autoOpen: true,
+    });
+
+
+
+    /*var myModal = new Cardinal({
+        title: 'Welcome Scott!',
+        subTitle: 'This is a bit of information',
         overlay: true,
         autoOpen: true,
         //height: 200,
         exitIntent: false,
-        ajaxURL: 'http://192.168.12.3:8888/internal-projectsdemos/content.php',
+        ajaxURL: 'http://192.168.12.3:8888/internal-projects/demos/content.php',
         //cookieAmount: 2,
         //cookieName: 'abcd',
         //cookieValue: 'efgh',
-    });
+    }); */
 </script>
 
 </html>
