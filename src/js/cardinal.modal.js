@@ -77,6 +77,13 @@
 
             // Place initialization logic here
             this.open();
+
+
+            if (this.closeButton) {
+                this.closeButton.addEventListener('click', this.close.bind(this));
+            }
+
+
         },
         open: function () {
             console.log('opening');
@@ -86,6 +93,10 @@
 
 
 
+        },
+        close: function () {
+            $(this.element).removeClass('is-opened');
+            $(this.overlay).removeClass('is-opened');
         },
         closeButton: function () {
             if(this.settings.includeCloseButton != false) {

@@ -50,17 +50,15 @@
 
 </body>
 <script type="text/javascript">
-
     $('#cardinal-offer').Cardinal({
         title: 'Welcome Scott!',
         subTitle: 'This is just some supporting text..',
         width: 600,
-        //titleColor: '#FFFFFF',
-        //headerColor: '#000000',
-        overlay: false,
+        titleColor: '#FFFFFF',
+        headerColor: '#000000',
+        overlay: true,
         autoOpen: true,
     });
-
 </script>
 
 </html>
