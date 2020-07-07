@@ -13,7 +13,12 @@
 
 #cardinal-overlay.is-opened {
   opacity: 1;
-  transition: opacity .25s ease-in;
+  transition: opacity .45s ease-in;
+}
+
+#cardinal-overlay.is-closed {
+  opacity: 0;
+  transition: opacity .45s ease-out;
 }
 
 .cardinal-modal {
@@ -33,6 +38,11 @@
 .cardinal-modal.is-opened {
   opacity: 1;
   transition: opacity 1s ease-in;
+}
+
+.cardinal-modal.is-closed {
+  opacity: 0;
+  transition: opacity 1s ease-out;
 }
 
 .cardinal-modal.no-overlay {
@@ -61,8 +71,7 @@
 
 .cardinal-modal .ca-close-button {
   font-family: Helvetica, Arial, sans-serif;
-  font-size: 24px;
-  line-height: 2px;
+  font-size: 20px;
   position: absolute;
   top: 5px;
   right: 5px;

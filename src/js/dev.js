@@ -106,10 +106,6 @@
                 this.overlay.addEventListener('click', this.close.bind(this));
             }
 
-            if (this.settings.cookieName) {
-                //createCookie: function (name, value, days) {
-                this.createCookie(this.settings.cookieName, this.settings.cookieValue, this.settings.cookieAmount)
-            }
 
 
 
@@ -191,7 +187,7 @@
                 $(this.element).addClass('no-overlay')
             }
 
-            
+
   
             if (this.settings.title != '' || this.settings.subTitle != '') {
                 this.header = document.createElement('div');
@@ -241,20 +237,8 @@
 
             }
 
-            if (this.settings.exitIntent === true) {
-                document.addEventListener("mouseout", evt => {
-                    if (evt.toElement === null && evt.relatedTarget === null) {
-                    // An intent to exit has happened
-                    $(this.overlay).addClass('is-opened').fadeIn(30000).delay(30000);
-                    $(this.element).addClass('is-opened').fadeIn(30000).delay(30000);
-                
-                
-                
-                    }
-                });
-            
-            
-            }
+
+
 
 
         }
