@@ -6,7 +6,7 @@
     <title>Cardinal Modal</title>
     <link rel="stylesheet" href="dist/css/home.css">
     <link rel="stylesheet" href="http://192.168.12.3:8181/internal-projects/cardinal-grid/dist/css/cdl.min.css">
-    <link rel="stylesheet" href="dist/css/cdl.min.css">
+    <link rel="stylesheet" href="dist/css/cdl.modal.css">
 
 
 
@@ -40,30 +40,17 @@
         <div class="ca-content ca-container">
             <section>
                 <div class="column">
-                    <form class="ca-form">
-                        <section>
-                            <div class="column has-field">
-                                <input type="text" name="firstname" id="firstname" required>
-                                <label for="firstname" class="is-required">First Name</label>
-                            </div>
-                            <div class="column has-field">
-                                <input type="text" name="lastname" id="lastname" required>
-                                <label for="lastname" class="is-required">Last Name</label>
-                            </div>
-                        </section>
-                        <section>
-                            <div class="column has-field">
-                                <textarea id="" name="" rows="4" cols="50" ></textarea>
-                                <label for="" class="is-required">Comments</label>
-                            </div>
-                        </section>    
-                    </form>
+                    <p>Donec ullamcorper nulla non metus auctor fringilla. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+
+                    <p>Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+
+                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
                 </div>
             </section>
         </div>
     </div>
 </div>
-<div class="cdl-overlay"></div>
+<div class="cdl-overlay cdl-open"></div>
 
 
 
@@ -93,7 +80,7 @@
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <!--<script src="src/js/dev-min.js"></script>-->
-    <script src="src/js/cdl.js"></script>
+    <script src="src/js/cdl.modal.js"></script>
 
 
 
@@ -101,11 +88,15 @@
 <script type="text/javascript">
     $('.cdl-modal').cdl({
         width: 500,
-        cookieName: 'Hello',
-        cookieValue: 'uhsdahuglsjruhgliuhliuh',
-
+        cookieAmount: 2,
+        cookieName: 'CDL Cookie',
+        cookieValue: 'xsidkdjfgfbsjsjfhfhssj',
         //ajaxURL: 'http://192.168.12.3:8888/internal-projects/demos/content.php'
     });
+
+    
+
+
 </script>
 
 </html>
