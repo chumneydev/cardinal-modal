@@ -1,0 +1,28 @@
+.cdl-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #FFFFFF;
+  width: 500px;
+  padding: 10px;
+  z-index: 9999;
+}
+
+.cdl-modal .cdl-body {
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
+  color: #FFFFFF;
+}
+
+.cdl-overlay {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  transition: 1ms opacity ease;
+  background: rgba(0, 0, 0, 0.6);
+}

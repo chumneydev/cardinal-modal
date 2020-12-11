@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Cardinal Modal</title>
     <link rel="stylesheet" href="dist/css/home.css">
-    <link rel="stylesheet" href="dist/css/modal.min.css">
+    <link rel="stylesheet" href="http://192.168.12.3:8181/internal-projects/cardinal-grid/dist/css/cdl.min.css">
+    <link rel="stylesheet" href="dist/css/cdl.min.css">
 
 
 
@@ -25,10 +26,48 @@
         
         <p>Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
 
-<a class="btn" data-popup-open="popup-1" href="#">Open Popup #1</a>
+        <!--<a class="btn" data-popup-open="popup-1" href="#">Open Popup #1</a>-->
 
 
     </div>
+
+<div class="cdl-modal cdl-show">
+    <div class="cdl-header">
+        <div class="cdl-close"><!--<i class="fa fa-close"></i>-->X</div>
+    </div>
+	
+    <div class="cdl-body">
+        <div class="ca-content ca-container">
+            <section>
+                <div class="column">
+                    <form class="ca-form">
+                        <section>
+                            <div class="column has-field">
+                                <input type="text" name="firstname" id="firstname" required>
+                                <label for="firstname" class="is-required">First Name</label>
+                            </div>
+                            <div class="column has-field">
+                                <input type="text" name="lastname" id="lastname" required>
+                                <label for="lastname" class="is-required">Last Name</label>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="column has-field">
+                                <textarea id="" name="" rows="4" cols="50" ></textarea>
+                                <label for="" class="is-required">Comments</label>
+                            </div>
+                        </section>    
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<div class="cdl-overlay"></div>
+
+
+
+
 
 
 
@@ -48,38 +87,20 @@
 
 
 
-    <div id="cardinal-offer" class="cardinal-modal">
-        <div class="ca-content">
-            <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
-    </div>
-
-
-
-
-
 
 
     <!-- containter -->
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <!--<script src="src/js/dev-min.js"></script>-->
-    <script src="src/js/cardinal.modal.js"></script>
+    <script src="src/js/cdl.js"></script>
 
 
 
 </body>
 <script type="text/javascript">
-    $('#cardinal-offer').Cardinal({
-        title: 'This is a Title',
-        subTitle: 'This is just some supporting text..',
-        width: 800,
-        titleColor: '#FFFFFF',
-        headerColor: '#007cf6',
-        overlay: true,
-        //exitIntent: true,
-        autoOpen: true,
-        cookieAmount: 0,
+    $('.cdl-modal').cdl({
+        width: 500,
         cookieName: 'Hello',
         cookieValue: 'uhsdahuglsjruhgliuhliuh',
 

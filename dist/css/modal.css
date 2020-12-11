@@ -54,7 +54,7 @@
 }
 
 .cardinal-modal .ca-content {
-  padding: 0 20px 24px 20px;
+  padding: 20px 20px 24px 20px;
 }
 
 .cardinal-modal h1 {
@@ -87,6 +87,10 @@
 
 .cardinal-modal .ca-close-button:hover {
   background: #c0392b;
+}
+
+.cardinal-modal .ca-close-button::after {
+  content: "X";
 }
 
 /*.ca-modal.ca-modal-open.ca-modal-anchor {
