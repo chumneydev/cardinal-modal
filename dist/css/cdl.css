@@ -7,15 +7,10 @@
   width: 500px;
   padding: 10px;
   z-index: 9999;
-  display: none;
-}
-
-.cdl-modal.cdl-shadow {
-  box-shadow: 0px 0px 27px -2px rgba(0, 0, 0, 0.2);
 }
 
 .cdl-modal.cdl-open {
-  display: block;
+  opacity: 1;
 }
 
 .cdl-modal .cdl-body {

@@ -26,6 +26,7 @@
 			defaults = {
                 width: 500,
                 cookieAmount: 0,
+                overlay: false,
                 cookieName: '',
                 cookieValue: '',
 
@@ -56,12 +57,36 @@
 				// you can add more functions like the one below and
 				// call them like the example below
                 //this.yourOtherFunction( "jQuery Boilerplate" );
-                this.width();
-                this.cookies();
-                console.log(this.readCookie(this.settings.cookieName))
+
+
+                this.create();
 
             },
-            
+            create: function () {
+                this.width();
+                this.cookies();
+
+                if (this.settings.autoOpen == true) {
+                    this.open();
+                }
+
+                if (this.settings.overlay == true) {
+                    this.overlay();
+
+                }
+            },
+            open: function() {
+    			$( this.element ).addClass('cdl-open');
+    			$( this.element ).addClass('cdl-shadow');
+            },
+            overlay: function() {
+                var createOverlay = $('<div>').attr('class', 'cdl-overlay');
+                $( this.element ).after(createOverlay);
+    			$('.cdl-overlay').addClass('cdl-open');
+    			$( this.element ).removeClass('cdl-shadow');
+
+    			//$( '.cdl-overlay' ).addClass('cdl-open');
+            },
             width: function() {
     			$( this.element ).css('width', this.settings.width + 'px');
             },

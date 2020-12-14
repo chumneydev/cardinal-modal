@@ -31,7 +31,7 @@
 
     </div>
 
-<div class="cdl-modal cdl-show">
+<div class="cdl-modal">
     <div class="cdl-header">
         <div class="cdl-close"><!--<i class="fa fa-close"></i>-->X</div>
     </div>
@@ -50,7 +50,6 @@
         </div>
     </div>
 </div>
-<div class="cdl-overlay cdl-open"></div>
 
 
 
@@ -87,8 +86,10 @@
 </body>
 <script type="text/javascript">
     $('.cdl-modal').cdl({
+        autoOpen: true,
         width: 500,
         cookieAmount: 2,
+        overlay: false,
         cookieName: 'CDL Cookie',
         cookieValue: 'xsidkdjfgfbsjsjfhfhssj',
         //ajaxURL: 'http://192.168.12.3:8888/internal-projects/demos/content.php'
