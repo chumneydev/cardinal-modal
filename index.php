@@ -33,49 +33,24 @@
 
 <div class="cdl-modal">
     <div class="cdl-header">
-        <div class="cdl-close"><!--<i class="fa fa-close"></i>-->X</div>
     </div>
 	
-    <div class="cdl-body">
-        <div class="ca-content ca-container">
-            <section>
-                <div class="column">
-                    <p>Donec ullamcorper nulla non metus auctor fringilla. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+    <div class="cdl-body ca-container">
+        <section>
+            <div class="column">
+                <p>Donec ullamcorper nulla non metus auctor fringilla. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
 
-                    <p>Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
 
-                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
                 </div>
-            </section>
-        </div>
+        </section>
     </div>
 </div>
 
 
 
 
-
-
-
-<!--<div class="popup" data-popup="popup-1">
-	<div class="popup-inner">
-		<h2>Wow! This is Awesome! (Popup #1)</h2>
-		<p>Donec in volutpat nisi. In quam lectus, aliquet rhoncus cursus a, congue et arcu. Vestibulum tincidunt neque id nisi pulvinar aliquam. Nulla luctus luctus ipsum at ultricies. Nullam nec velit dui. Nullam sem eros, pulvinar sed pellentesque ac, feugiat et turpis. Donec gravida ipsum cursus massa malesuada tincidunt. Nullam finibus nunc mauris, quis semper neque ultrices in. Ut ac risus eget eros imperdiet posuere nec eu lectus.</p>
-		<p><a data-popup-close="popup-1" href="#">Close</a></p>
-		
-		<a class="popup-close" data-popup-close="popup-1" href="#">x</a>
-	</div>
-</div>-->
-
-
-
-
-
-
-
-
-
-    <!-- containter -->
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <!--<script src="src/js/dev-min.js"></script>-->
@@ -88,15 +63,46 @@
     $('.cdl-modal').cdl({
         autoOpen: true,
         width: 500,
+        closeButton: false,
         cookieAmount: 2,
-        overlay: false,
-        cookieName: 'CDL Cookie',
+        overlay: true,
+        cookieName: 'test',
         cookieValue: 'xsidkdjfgfbsjsjfhfhssj',
         //ajaxURL: 'http://192.168.12.3:8888/internal-projects/demos/content.php'
     });
 
-    
 
+    function getCookie(name) {
+    var dc = document.cookie;
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+    }
+    else
+    {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+        end = dc.length;
+        }
+    }
+    // because unescape has been deprecated, replaced with decodeURI
+    //return unescape(dc.substring(begin + prefix.length, end));
+    return decodeURI(dc.substring(begin + prefix.length, end));
+} 
+
+    var myCookie = getCookie("MyCookie");
+
+    if (myCookie == null) {
+        console.log('no cookie!')
+        // do cookie doesn't exist stuff;
+    }
+    else {
+        console.log('cookie!')
+        // do cookie exists stuff
+    }
 
 </script>
 

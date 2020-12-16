@@ -27,6 +27,8 @@
                 width: 500,
                 cookieAmount: 0,
                 overlay: false,
+                closeButton: false,
+                overlayClose: true,
                 cookieName: '',
                 cookieValue: '',
 
@@ -66,11 +68,21 @@
                 this.width();
                 this.cookies();
 
-                if (this.settings.autoOpen == true) {
+                if (this.settings.autoOpen == true && this.settings.cookieName !==  '') {
                     this.open();
                 }
 
                 if (this.settings.overlay == true) {
+                    this.overlay();
+
+                }
+
+                if (this.settings.closeButton == true) {
+                    this.closeButton();
+
+                }
+
+                if (this.settings.overlayClose == false) {
                     this.overlay();
 
                 }
@@ -79,13 +91,37 @@
     			$( this.element ).addClass('cdl-open');
     			$( this.element ).addClass('cdl-shadow');
             },
+            close: function() {
+
+            },
             overlay: function() {
                 var createOverlay = $('<div>').attr('class', 'cdl-overlay');
                 $( this.element ).after(createOverlay);
     			$('.cdl-overlay').addClass('cdl-open');
+    			$('.cdl-overlay').addClass('cdl-close');
     			$( this.element ).removeClass('cdl-shadow');
 
     			//$( '.cdl-overlay' ).addClass('cdl-open');
+            },
+            closeButton: function() {
+                /*var createOverlay = $('<div>').attr('class', 'cdl-overlay');
+                $( this.element ).after(createOverlay);
+    			$('.cdl-overlay').addClass('cdl-open');
+    			$('.cdl-overlay').addClass('cdl-close');
+                $( this.element ).removeClass('cdl-shadow');
+                <a href="#" class="cdl-close">X</a>
+
+                */
+
+                //$( '.cdl-overlay' ).addClass('cdl-open');
+                var closeButton = $('<a />', {
+                    href: '#',
+                    class: 'cdl-close',
+                    text: 'X'
+                });
+                $( '.cdl-header' ).prepend(closeButton);
+
+                console.log('close me')
             },
             width: function() {
     			$( this.element ).css('width', this.settings.width + 'px');
@@ -103,6 +139,17 @@
                 }
                 else var expires = "";
                 document.cookie = name + "=" + value + expires + "; path=/";
+            },
+
+            exitIntent: function () {
+                document.addEventListener("mouseout", evt => {
+                    if (evt.toElement === null && evt.relatedTarget === null) {
+                    // An intent to exit has happened
+                        $( this.element).addClass('cdl-open');
+                        $(this.element).addClass('cdl-open');
+                    }
+                });
+
             },
 
 			yourOtherFunction: function() {

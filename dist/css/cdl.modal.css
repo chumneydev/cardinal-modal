@@ -7,7 +7,9 @@
   width: 500px;
   padding: 10px;
   z-index: 9999;
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
 .cdl-modal.cdl-shadow {
@@ -15,13 +17,35 @@
 }
 
 .cdl-modal.cdl-open {
-  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 
 .cdl-modal .cdl-body {
   max-height: calc(100vh - 210px);
   overflow-y: auto;
   font-family: Helvetica, Arial, sans-serif;
+}
+
+.cdl-modal .cdl-header {
+  position: relative;
+  width: 100%;
+  display: block;
+  min-height: 20px;
+}
+
+.cdl-modal .cdl-header .cdl-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000000;
+}
+
+.cdl-modal .cdl-header .cdl-close:hover {
+  color: #f26518;
 }
 
 .cdl-overlay {
