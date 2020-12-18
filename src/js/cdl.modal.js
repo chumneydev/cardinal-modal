@@ -79,6 +79,10 @@
 
                 if (this.settings.closeButton == true) {
                     this.closeButton();
+                    $('.cdl-close').click(function() {
+                        this.close();
+                    })
+
 
                 }
 
@@ -92,6 +96,7 @@
     			$( this.element ).addClass('cdl-shadow');
             },
             close: function() {
+    			$( this.element ).removeClass('cdl-open');
 
             },
             overlay: function() {
@@ -124,7 +129,7 @@
                 console.log('close me')
             },
             width: function() {
-    			$( this.element ).css('width', this.settings.width + 'px');
+    			$( this.element ).css('max-width', this.settings.width + 'px');
             },
             cookies: function () {
                 if (this.settings.cookieName) {

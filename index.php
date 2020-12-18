@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Cardinal Modal</title>
     <link rel="stylesheet" href="dist/css/home.css">
     <link rel="stylesheet" href="http://192.168.12.3:8181/internal-projects/cardinal-grid/dist/css/cdl.min.css">
@@ -12,7 +14,7 @@
 
 </head>
 
-<body>
+<body> 
 
     <div id="container">
 
@@ -63,7 +65,7 @@
     $('.cdl-modal').cdl({
         autoOpen: true,
         width: 500,
-        closeButton: false,
+        closeButton: true,
         cookieAmount: 2,
         overlay: true,
         cookieName: 'test',
