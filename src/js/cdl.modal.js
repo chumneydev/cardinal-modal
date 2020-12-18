@@ -80,7 +80,8 @@
                 if (this.settings.closeButton == true) {
                     this.closeButton();
                     $('.cdl-close').click(function() {
-                        this.close();
+                        $('.cdl-modal').removeClass('cdl-open')
+                        $('.cdl-overlay').removeClass('cdl-open')
                     })
 
 
